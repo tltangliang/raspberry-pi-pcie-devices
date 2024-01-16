@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <script async="" src="//analytics.midwesternmac.com/tracker.js" id="fathom-script"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ASUS PCE-AC51 802.11ac WiFi Adapter | Raspberry Pi PCIe Database</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="ASUS PCE-AC51 802.11ac WiFi Adapter" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This WiFi card supports 802.11ac, and has drivers available for Linux and Windows, at least, but I have had trouble getting these drivers running (or even installable) on the Pi." />
+<meta property="og:description" content="This WiFi card supports 802.11ac, and has drivers available for Linux and Windows, at least, but I have had trouble getting these drivers running (or even installable) on the Pi." />
+<link rel="canonical" href="https://pipci.jeffgeerling.com//cards_network/asus-pce-ac51-wifi-5.html" />
+<meta property="og:url" content="https://pipci.jeffgeerling.com//cards_network/asus-pce-ac51-wifi-5.html" />
+<meta property="og:site_name" content="Raspberry Pi PCIe Database" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-01-16T04:11:16+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ASUS PCE-AC51 802.11ac WiFi Adapter" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-01-16T04:11:16+00:00","datePublished":"2024-01-16T04:11:16+00:00","description":"This WiFi card supports 802.11ac, and has drivers available for Linux and Windows, at least, but I have had trouble getting these drivers running (or even installable) on the Pi.","headline":"ASUS PCE-AC51 802.11ac WiFi Adapter","mainEntityOfPage":{"@type":"WebPage","@id":"https://pipci.jeffgeerling.com//cards_network/asus-pce-ac51-wifi-5.html"},"url":"https://pipci.jeffgeerling.com//cards_network/asus-pce-ac51-wifi-5.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="sponsor_banner" href="https://github.com/sponsors/geerlingguy">Sponsor <i class="fa-solid fa-heart"></i></a>
+          <a id="forkme_banner" href="https://github.com/geerlingguy/raspberry-pi-pcie-devices">View on GitHub <i class="fa-brands fa-github"></i></a>
+
+          <h2 id="project_title"><a href="/">Raspberry Pi PCIe Database</a></h2>
+          <h2 id="project_tagline">Raspberry Pi PCI Express device compatibility database</h2>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+
+        <h1 id="card_title">ASUS PCE-AC51 802.11ac WiFi Adapter</h1>
+
+        <div class="card_picture">
+          
+            <a href="/images/network-asus-pce-ac51.jpg"><img src="/images/network-asus-pce-ac51.jpg" alt="ASUS PCE-AC51 802.11ac WiFi Adapter"></a>
+          
+        </div>
+
+        <table class="card_details_table">
+          <thead>
+            <tr>
+              <th>CM4 Functionality</th>
+              <th>Pi 5 Functionality</th>
+              <th>Driver Required?</th>
+              <th>More Info</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Currently Testing</td>
+              <td>Untested</td>
+              <td>Maybe</td>
+              <td><a href="https://github.com/geerlingguy/raspberry-pi-pcie-devices/issues/20">GitHub Issue</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card_videos">
+          <h3>Videos Related to this Card</h2>
+            
+              <ul>
+                
+                  <li><a href="https://www.youtube.com/watch?v=csI19aOJEik">WiFi 6 on the Raspberry Pi CM4 makes it Fly! MORE THAN 1 Gbps!</a></a></li>
+                
+              </ul>
+            
+        </div>
+
+        <div class="card_content">
+          <h3>Description and Notes</h3>
+          <p>This WiFi card supports 802.11ac, and has drivers available for Linux and Windows, at least, but I have had trouble getting these drivers running (or even installable) on the Pi.</p>
+
+<p>Many of the forked Linux drivers won’t compile on ARM64 or ARMv7, so I have also tried using the card with a recompiled Linux kernel following my <a href="https://github.com/geerlingguy/raspberry-pi-pcie-devices/tree/master/extras/cross-compile">cross-compile guide</a>, with the following module selected via <code class="language-plaintext highlighter-rouge">menuconfig</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Device Drivers
+  &gt; Network device support
+    &gt; Wireless LAN
+      &gt; Realtek rtlwifi family of devices
+        &gt; Realtek RTL8821AE/RTL8812AE Wireless Network Adapter
+</code></pre></div></div>
+
+<p>This seems to load the kernel module (<code class="language-plaintext highlighter-rouge">rtl8821ae</code>), but the card won’t work as in the <code class="language-plaintext highlighter-rouge">dmesg</code> logs I get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ dmesg | grep rtl
+[    5.122777] rtl8821ae 0000:01:00.0: enabling device (0000 -&gt; 0002)
+[    5.181119] rtl8821ae: Using firmware rtlwifi/rtl8812aefw.bin
+[    5.182443] rtl8821ae 0000:01:00.0: Direct firmware load for rtlwifi/rtl8812aefw.bin failed with error -2
+[    5.183980] rtlwifi: Loading alternative firmware rtlwifi/rtl8821aefw.bin
+[    5.184083] rtl8821ae: Using firmware rtlwifi/rtl8812aefw_wowlan.bin
+[    5.184215] rtl8821ae 0000:01:00.0: Direct firmware load for rtlwifi/rtl8812aefw_wowlan.bin failed with error -2
+[    5.184337] rtlwifi: Loading alternative firmware rtlwifi/rtl8821aefw.bin
+[    5.189198] rtl_pci: Cannot allocate RX ring
+[    5.189218] rtl_pci: tx ring initialization failed
+[    5.189228] rtl_pci: Failed to init PCI
+[    5.189357] rtl8821ae: probe of 0000:01:00.0 failed with error -12
+</code></pre></div></div>
+
+<p>See the linked GitHub issue for the latest status on this card.</p>
+
+        </div>
+
+        <div class="card_buy_link">
+          <h3>Buy this Card</h3>
+          <p>If you'd like to purchase this card, it helps me out if you use the following product link:<br>
+          <a href="https://amzn.to/3ldzLVn">ASUS PCE-AC51 802.11ac WiFi Adapter</a></p>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">The Raspberry Pi PCIe Database project is maintained by <a href="https://github.com/geerlingguy">geerlingguy</a></p>
+      </footer>
+    </div>
+
+    
+      <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+      <script>
+      (function(f, a, t, h, o, m){
+        a[h]=a[h]||function(){
+          (a[h].q=a[h].q||[]).push(arguments)
+        };
+        o=f.createElement('script'),
+        m=f.getElementsByTagName('script')[0];
+        o.async=1; o.src=t; o.id='fathom-script';
+        m.parentNode.insertBefore(o,m)
+      })(document, window, '//analytics.midwesternmac.com/tracker.js', 'fathom');
+      fathom('set', 'siteId', 'JVIIB');
+      fathom('trackPageview');
+      </script>
+      <!-- / Fathom -->
+    
+  </body>
+</html>
